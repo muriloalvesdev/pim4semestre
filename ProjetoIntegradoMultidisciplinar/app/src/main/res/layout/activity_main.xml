@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundcolor"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context=".view.MainActivity">
+
+    <Button
+        android:id="@+id/btnCriarContato"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="80dp"
+        android:layout_height="52dp"
+        android:layout_alignStart="@+id/textViewTotalVendas"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="159dp"
+        android:background="@drawable/contatodois"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="49dp" />
+
+    <Button
+        android:id="@+id/btnCriarVenda"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="77dp"
+        android:layout_height="59dp"
+        android:layout_alignTop="@+id/btnCriarContato"
+        android:layout_alignEnd="@+id/textViewCadastrarEstoque"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="13dp"
+        android:background="@drawable/vendasdois"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="10dp"
+        tools:layout_editor_absoluteY="400dp" />
+
+    <Button
+        android:id="@+id/btnCriarEstoque"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="74dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/textViewTotalContatos"
+        android:layout_alignEnd="@+id/textViewEstoque"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="174dp"
+        android:background="@drawable/estoque"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="20dp"
+        tools:layout_editor_absoluteY="225dp" />
+
+    <TextView
+        android:id="@+id/textViewTotalContatos"
+        android:layout_width="96dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnListarContatos"
+        android:layout_alignStart="@+id/btnCriarContato"
+        android:layout_marginStart="-6dp"
+        android:layout_marginBottom="-80dp"
+        android:text="Clientes Total"
+        android:textColor="#000000	"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="256dp"
+        tools:layout_editor_absoluteY="31dp" />
+
+    <TextView
+        android:id="@+id/textViewEstoque"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonListEstoque"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="17dp"
+        android:layout_marginRight="17dp"
+        android:layout_marginBottom="-70dp"
+        android:text="Total Estoque"
+        android:textColor="#000000	"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="268dp"
+        tools:layout_editor_absoluteY="208dp" />
+
+    <TextView
+        android:id="@+id/textViewTotalVendas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonListEstoque"
+        android:layout_alignStart="@+id/btnListarContatos"
+        android:layout_marginTop="-18dp"
+        android:text="Total Vendas"
+        android:textColor="#000000	"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="258dp"
+        tools:layout_editor_absoluteY="379dp" />
+
+    <Button
+        android:id="@+id/btnListarContatos"
+        android:layout_width="67dp"
+        android:layout_height="51dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="185dp"
+        android:background="@drawable/contato"
+        android:onClick="chamarActivityListaContatos"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="270dp"
+        tools:layout_editor_absoluteY="49dp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnCriarContato"
+        android:layout_alignStart="@+id/btnCriarEstoque"
+        android:layout_marginBottom="-159dp"
+        android:text="Efetuar Venda"
+        android:textColor="#000000	"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="4dp"
+        tools:layout_editor_absoluteY="378dp" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="122dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textViewTotalVendas"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="140dp"
+        android:text="Cadastrar Cliente"
+        android:textColor="#000000	"
+        tools:layout_editor_absoluteX="4dp"
+        tools:layout_editor_absoluteY="29dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textViewCadastrarEstoque"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textViewTotalContatos"
+        android:layout_alignEnd="@+id/textView4"
+        android:layout_alignRight="@+id/textView4"
+        android:layout_marginTop="-79dp"
+        android:layout_marginEnd="-6dp"
+        android:layout_marginRight="-6dp"
+        android:text="Cadastrar Estoque"
+        android:textColor="#000000	"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="207dp" />
+
+    <Button
+        android:id="@+id/buttonListEstoque"
+        android:layout_width="wrap_content"
+        android:layout_height="49dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="18dp"
+        android:background="@drawable/listaproduto"
+        android:onClick="chamarActivityListaEstoque"
+        tools:layout_editor_absoluteX="279dp"
+        tools:layout_editor_absoluteY="226dp" />
+
+    <Button
+        android:id="@+id/buttonVendaCaixa"
+        android:layout_width="81dp"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="18dp"
+        android:background="@drawable/vendas"
+        android:onClick="chamarActivityListaVendas"
+        tools:layout_editor_absoluteX="260dp"
+        tools:layout_editor_absoluteY="399dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        android:text="MENU"
+        android:textColor="#000000	"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:fontFamily="sans-serif-condensed" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnCriarEstoque"
+        android:layout_alignStart="@+id/btnCriarContato"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="0dp"
+        android:text="Clientes"
+        android:textColor="#000000	"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonVendaCaixa"
+        android:layout_alignStart="@+id/textView2"
+        android:layout_marginStart="9dp"
+        android:layout_marginBottom="-1dp"
+        android:text="Vendas"
+        android:textColor="#000000"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textView3"
+        android:layout_alignEnd="@+id/btnCriarVenda"
+        android:text="Estoque"
+        android:textColor="#000000"
+        android:textStyle="bold" />
+
+</RelativeLayout>
