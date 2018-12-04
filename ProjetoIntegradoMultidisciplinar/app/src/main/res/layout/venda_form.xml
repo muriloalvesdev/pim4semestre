@@ -20,6 +20,18 @@
         android:id="@+id/editTextValorProduto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp"
         android:layout_marginTop="60dp"
-        android:hint="Valor" />
+        android:hint="Valor Unid." />
+
+    <EditText
+        android:id="@+id/editTextQuantidadeProduto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextValorProduto"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="16dp"
+        android:hint="Quantidade" />
 </RelativeLayout>

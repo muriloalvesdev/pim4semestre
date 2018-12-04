@@ -22,6 +22,8 @@ public class CreateEstoqueOnClickListener implements View.OnClickListener{
         final View formElementsView = inflater.inflate(R.layout.estoque_form, null, false);
         final EditText editNomeProduto = (EditText) formElementsView.findViewById(R.id.editNomeProduto);
         final EditText editTextQuantidadeProduto = (EditText) formElementsView.findViewById(R.id.editTextQuantidadeProduto);
+        final EditText editTextQuantidadeProdutoverdadeiro = (EditText) formElementsView.findViewById(R.id.editTextQuantidadeProdutoverdadeiro);
+
 
         new AlertDialog.Builder(context)
                 .setView(formElementsView)
@@ -31,14 +33,16 @@ public class CreateEstoqueOnClickListener implements View.OnClickListener{
                             public void onClick(DialogInterface dialog, int id) {
 
                                 String nomeProduto = editNomeProduto.getText().toString();
-                                String quantidade = editTextQuantidadeProduto.getText().toString();
+                                String valor = editTextQuantidadeProduto.getText().toString();
+                                String quantidade = editTextQuantidadeProdutoverdadeiro.getText().toString();
 
-                                if(nomeProduto.equals("") || quantidade.equals("")){
+                                if(nomeProduto.equals("") || valor.equals("")){
                                     Toast.makeText(context, "Você não preencheu todos os campos, o produto não foi armazenado.", Toast.LENGTH_SHORT).show();
                                 }else {
                                     Estoque estoque = new Estoque();
                                     estoque.setNomeProduto(nomeProduto);
                                     estoque.setQuantidadeProdutos(quantidade);
+                                    estoque.setValorPorProduto(valor);
 
                                     boolean criadoComSucesso = new EstoqueController(context).createEstoque(estoque);
 

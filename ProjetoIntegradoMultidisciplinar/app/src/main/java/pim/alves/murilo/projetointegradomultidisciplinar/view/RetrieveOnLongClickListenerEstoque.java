@@ -10,7 +10,9 @@ import android.widget.Toast;
 
 import pim.alves.murilo.projetointegradomultidisciplinar.R;
 import pim.alves.murilo.projetointegradomultidisciplinar.controller.EstoqueController;
+import pim.alves.murilo.projetointegradomultidisciplinar.controller.VendaController;
 import pim.alves.murilo.projetointegradomultidisciplinar.model.Estoque;
+import pim.alves.murilo.projetointegradomultidisciplinar.model.Venda;
 
 public class RetrieveOnLongClickListenerEstoque  implements View.OnLongClickListener {
     Context contexto;
@@ -21,17 +23,17 @@ public class RetrieveOnLongClickListenerEstoque  implements View.OnLongClickList
         contexto = v.getContext();
         id = v.getTag().toString();
 
-        final CharSequence[] itens = {"Editar", "Deletar"};
+        final CharSequence[] itens = {"Vender", "Deletar"};
         new AlertDialog.Builder(contexto).setTitle("Detalhes do estoque").setItems(itens, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int item) {
                 if(item == 0){
-                    editarEstoquePeloId(Integer.parseInt(id));
+                    venderProduto(Integer.parseInt(id));
                 }else if(item == 1){
                     boolean excluidoComSucesso = new EstoqueController(contexto).deleteEstoque(Integer.parseInt(id));
                     if(excluidoComSucesso){
                         Toast.makeText(contexto, "Excluído com sucesso", Toast.LENGTH_SHORT).show();
-                        ((MainActivityListarEstoque) contexto).atualizarListaEstoquue();
+                        ((MainActivityListarEstoque) contexto).atualizarListaVendas();
                     }else{
                         Toast.makeText(contexto, "Erro ao excuir", Toast.LENGTH_SHORT).show();
                     }
@@ -43,43 +45,34 @@ public class RetrieveOnLongClickListenerEstoque  implements View.OnLongClickList
         return false;
     }
 
-    public void editarEstoquePeloId(final int estoqueId){
-        Toast.makeText(contexto, "Editando" + estoqueId, Toast.LENGTH_SHORT).show();
+    public void venderProduto(final int estoqueId){
 
         final EstoqueController controller = new EstoqueController(contexto);
         final Estoque estoque = controller.findById(estoqueId);
+        final Estoque estoqueQuantidadeValor = controller.findByIdEstoqueParaVendas(estoqueId);
 
-        LayoutInflater inflater = (LayoutInflater) contexto.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        final View formEstoque = inflater.inflate(R.layout.estoque_form, null, false);
+        String splitParticionado = estoqueQuantidadeValor.getQuantidadeProdutos();
 
-        final EditText editTextNomeProduto = (EditText) formEstoque.findViewById(R.id.editNomeProduto);
-        final EditText editTextQuantidade = (EditText) formEstoque.findViewById(R.id.editTextQuantidadeProduto);
+        String split[] = splitParticionado.split(" ");
 
-        editTextNomeProduto.setText(estoque.getNomeProduto());
-        editTextQuantidade.setText(estoque.getQuantidadeProdutos());
+        Venda venda = new Venda();
+        venda.setId(estoque.getId());
+        venda.setNomeProduto(estoque.getNomeProduto());
+        venda.setQuantidade(split[1]);
+        venda.setValorVenda(split[4]);
 
-        new AlertDialog.Builder(contexto)
-                .setView(formEstoque)
-                .setTitle("Editar")
-                .setPositiveButton("Atualizar dados",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int id) {
-                                Estoque atualizarEstoque  = new Estoque();
+        boolean criadoComSucesso = new VendaController(contexto).createVenda(venda);
 
-                                atualizarEstoque.setId(estoqueId);
-                                atualizarEstoque.setNomeProduto(editTextNomeProduto.getText().toString());
-                                atualizarEstoque.setQuantidadeProdutos(editTextQuantidade.getText().toString());
+        if(criadoComSucesso){
+            Toast.makeText(contexto, "Venda efetuada com sucesso!", Toast.LENGTH_SHORT).show();
+            boolean excluidoComSucesso = new EstoqueController(contexto).deleteEstoque(Integer.parseInt(id));
+            if(excluidoComSucesso){
+                ((MainActivityListarEstoque) contexto).atualizarListaVendas();
+            }
+        }else{
+            Toast.makeText(contexto, "Erro ao efetuar a venda", Toast.LENGTH_SHORT).show();
+        }
 
-                                boolean atualizar = controller.updateEstoque(atualizarEstoque);
-                                if(atualizar){
-                                    Toast.makeText(contexto, "Dados atualizados com sucesso", Toast.LENGTH_LONG).show();
-                                    ((MainActivityListarEstoque) contexto).atualizarListaEstoquue();
-                                }else{
-                                    Toast.makeText(contexto, "Erro ao atualizar os dados", Toast.LENGTH_SHORT).show();
-                                }
-                                dialog.cancel();
-                            }
-                        }).show();
+
     }
 }

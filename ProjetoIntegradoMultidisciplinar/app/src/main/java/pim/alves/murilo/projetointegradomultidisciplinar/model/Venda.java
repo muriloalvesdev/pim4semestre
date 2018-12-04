@@ -1,5 +1,7 @@
 package pim.alves.murilo.projetointegradomultidisciplinar.model;
 
+import android.widget.Toast;
+
 public class Venda {
     private int id;
     private String nomeProduto;
@@ -25,7 +27,8 @@ public class Venda {
     }
 
     public void setValorVenda(String valorVenda){
-        this.valorVenda = valorVenda;
+
+        this.valorVenda = "Qtd: " + getQuantidade() + " R$: " + valorVenda;
     }
 
     public int getId(){

@@ -10,6 +10,7 @@ import java.util.List;
 
 import pim.alves.murilo.projetointegradomultidisciplinar.adapter.DataBaseAdapterEstoque;
 import pim.alves.murilo.projetointegradomultidisciplinar.model.Estoque;
+import pim.alves.murilo.projetointegradomultidisciplinar.model.Venda;
 
 public class EstoqueController extends DataBaseAdapterEstoque {
     public EstoqueController(Context context){
@@ -19,7 +20,8 @@ public class EstoqueController extends DataBaseAdapterEstoque {
     public boolean createEstoque(Estoque estoque){
         ContentValues values = new ContentValues();
         values.put("produto", estoque.getNomeProduto());
-        values.put("quantidadeProdutos", estoque.getQuantidadeProdutos());
+        values.put("quantidadeProdutos", estoque.getValorPorProduto());
+
         SQLiteDatabase db = this.getWritableDatabase();
 
         boolean isCreate = db.insert("estoque", null, values) > 0;
@@ -77,6 +79,22 @@ public class EstoqueController extends DataBaseAdapterEstoque {
             estoque = new Estoque();
             estoque.setId(estoqueId);
             estoque.setNomeProduto(nome);
+            estoque.setQuantidadeProdutos(quantidade);
+        }
+        return estoque;
+    }
+
+    public Estoque findByIdEstoqueParaVendas(int estoqueId){
+        Estoque estoque = null;
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sql = "SELECT * FROM estoque where id = " + estoqueId;
+        Cursor cursor = db.rawQuery(sql, null);
+
+        if(cursor.moveToFirst()){
+            String quantidade = cursor.getString(cursor.getColumnIndex("quantidadeProdutos"));
+
+            estoque = new Estoque();
+            estoque.setId(estoqueId);
             estoque.setQuantidadeProdutos(quantidade);
         }
         return estoque;

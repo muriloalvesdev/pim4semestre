@@ -60,14 +60,9 @@ public class MainActivity extends AppCompatActivity {
         int contador = new ContatoController(this).totalContatos();
 
         TextView textViewTotalContatos = (TextView)  findViewById(R.id.textViewTotalContatos);
-        if(contador == 0){
-            message = "Nenhum contato salvo";
-        }else if(contador == 1){
-            message = "1 Contato";
-        }else {
-            message = contador + "";
-            textViewTotalContatos.setText(message);
-        }
+        //message = contador + "";
+        message = "";
+        textViewTotalContatos.setText(message);
     }
 
     public void totalEstoque() {
@@ -76,14 +71,10 @@ public class MainActivity extends AppCompatActivity {
         int contador = new EstoqueController(this).totalEstoque();
 
         TextView textViewEstoque = (TextView)  findViewById(R.id.textViewEstoque);
-        if(contador == 0){
-            message = "Nenhum produto salvo";
-        }else if(contador == 1){
-            message = "1 Produto";
-        }else {
-            message = contador + "";
-            textViewEstoque.setText(message);
-        }
+        //message = contador + "";
+        message = "";
+        textViewEstoque.setText(message);
+
     }
 
     public void totalVenda() {
@@ -92,13 +83,8 @@ public class MainActivity extends AppCompatActivity {
         int contador = new VendaController(this).totalVendas();
 
         TextView textViewTotalVendas = (TextView)  findViewById(R.id.textViewTotalVendas);
-        if(contador == 0){
-            message = "Nenhuma venda encontrada";
-        }else if(contador == 1){
-            message = "1 Venda";
-        }else {
-            message = contador + "";
-            textViewTotalVendas.setText(message);
-        }
+        //message = contador + "";
+        message = "";
+        textViewTotalVendas.setText(message);
     }
 }

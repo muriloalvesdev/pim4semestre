@@ -21,6 +21,20 @@
         android:id="@+id/editTextQuantidadeProduto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_below="@+id/editTextQuantidadeProdutoverdadeiro"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="4dp"
+        android:hint="Valor Unid." />
+
+    <EditText
+        android:id="@+id/editTextQuantidadeProdutoverdadeiro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="52dp"
         android:hint="Quantidade" />
+
 </RelativeLayout>

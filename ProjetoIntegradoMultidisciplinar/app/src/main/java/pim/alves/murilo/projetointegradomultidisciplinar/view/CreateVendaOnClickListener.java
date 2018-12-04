@@ -21,6 +21,7 @@ public class CreateVendaOnClickListener implements View.OnClickListener{
         final View formElementsView = inflater.inflate(R.layout.venda_form, null, false);
         final EditText editTextNomeProduto = (EditText) formElementsView.findViewById(R.id.editTextNomeProduto);
         final EditText editTextValorProduto = (EditText) formElementsView.findViewById(R.id.editTextValorProduto);
+        final EditText editTextQuantidade = (EditText) formElementsView.findViewById(R.id.editTextQuantidadeProduto);
 
         new AlertDialog.Builder(context)
                 .setView(formElementsView)
@@ -31,12 +32,14 @@ public class CreateVendaOnClickListener implements View.OnClickListener{
 
                                 String nomeProduto = editTextNomeProduto.getText().toString();
                                 String valorProduto = editTextValorProduto.getText().toString();
+                                String quantidadeProdutos = editTextQuantidade.getText().toString();
 
-                                if(nomeProduto.equals("") || valorProduto.equals("")){
+                                if(nomeProduto.equals("") || valorProduto.equals("") || quantidadeProdutos.equals("")){
                                     Toast.makeText(context, "Você não preencheu todos os campos, a venda não foi efetuada.", Toast.LENGTH_SHORT).show();
                                 }else {
                                     Venda venda = new Venda();
                                     venda.setNomeProduto(nomeProduto);
+                                    venda.setQuantidade(quantidadeProdutos);
                                     venda.setValorVenda(valorProduto);
 
                                     boolean criadoComSucesso = new VendaController(context).createVenda(venda);

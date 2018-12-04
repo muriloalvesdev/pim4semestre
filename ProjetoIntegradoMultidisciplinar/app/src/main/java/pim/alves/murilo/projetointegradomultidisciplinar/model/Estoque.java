@@ -5,9 +5,17 @@ public class Estoque {
     private int id;
     private String nomeProduto;
     private String quantidadeProdutos;
-
+    private String valorPorProduto;
 
     public Estoque(){}
+
+    public void setValorPorProduto(String valorPorProduto){
+        this.valorPorProduto = "Qtd: " + getQuantidadeProdutos() + " - " +"R$: " + valorPorProduto;
+    }
+
+    public String getValorPorProduto(){
+        return valorPorProduto;
+    }
 
     public void setId(int id){ this.id = id; }
 
